@@ -1,0 +1,27 @@
+.alinearFormulariLogin{
+    padding-right: 6%;
+    padding-left: 6%;
+    padding-top: 5%;
+}
+.alinearBtnBuEli{
+ margin-top: 80px;   
+}
+
+.paraBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.paraImagenLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.posicionBtnSalirIntegrante{
+    position: relative;
+    display: block;
+    padding-right: auto;
+    padding-left: 551px;
+}

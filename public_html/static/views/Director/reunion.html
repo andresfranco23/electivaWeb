@@ -1,0 +1,107 @@
+<div class="col-xs-12">
+    <div class="col-md-12">
+        <form  method="post" role="form" name="formulario" >
+            <div class="form-group col-md-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="Nombre " ng-model="reunion.nombre" required>
+            </div> 
+            <div class="form-group col-md-6">
+                <label >
+                    Ubicacion
+                </label>
+                <input ng-model="reunion.ubicacion" placeholder="Descripcion" class="form-control" required>
+            </div>
+             
+            <div  class="form-group col-lg-6">
+                <label>
+                    Tematica
+                </label>        
+                <input type="text" placeholder="tematica" ng-model="reunion.tematica" class="form-control" required>
+            </div>
+            <div class="col col-lg-7 ">
+                <button class="btn btn-primary" type="submit" ng-click="crearReunion(formulario)" >
+                    Agregar
+                </button>
+                <button class="btn btn-success" type="button" ng-click="modificarReunion(formulario)">
+                    Modificar
+                </button>
+            </div>
+        </form>
+
+        <form role="form" name="formulario2" ng-submit="buscarReunion(formulario2)">
+            <div class="form-group col-lg-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="nombre a buscar" 
+                        ng-model="reunion.nombre" required>
+            </div>
+            <div class="form-group col-lg-6"  style="margin-top: 24px ">
+            <button class="btn btn-info" type="submit">
+                Buscar
+            </button>
+            <button class="btn btn-danger" type="button" ng-click="eliminarReunion(formulario2)">
+                Eliminar
+            </button>
+            </div>
+        </form>
+
+        <div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar cargos" ng-model="filtrar">
+
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+
+
+                        </th> 
+
+
+                        <th class="seleccionable">
+                            <a>Ubicacion</a>
+
+
+                        </th>   
+
+                        <th class="seleccionable">
+                            <a>Tematica</a>
+
+
+                        </th>    
+
+                        
+
+                    </tr>
+                </thead>
+                <tbody ng-init="listarReunion()" >
+                    <tr  ng-click="getSelectedRow()" ng-repeat="obj in listadoReunion|
+                            filter:filtrar ">
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.ubicacion}}</td>
+                        <td>{{obj.tematica}}</td>
+                        
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>

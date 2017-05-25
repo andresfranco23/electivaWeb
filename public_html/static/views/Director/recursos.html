@@ -1,0 +1,119 @@
+<div class="col-xs-12">
+    <div class="col-md-12">
+        <form  method="post" role="form" name="formulario" >
+            <div class="form-group col-md-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="Nombre " ng-model="recurso.nombre" required>
+            </div> 
+            <div class="form-group col-md-6">
+                <label >
+                    Cantidad:
+                </label>
+                <input ng-model="recurso.cantidad" placeholder="Cantidad recursos" class="form-control" required>
+            </div>
+            <div ng-init="" class="form-group col-md-6">
+                <label>
+                    Descripcion
+                </label>
+                <input ng-model="recurso.descripcion" placeholder="Descripcion del recursos" class="form-control" required>
+
+            </div> 
+             <div class="form-group col-md-6" ng-init="listarForaneaTarea()">
+                <label>
+                    Asignar recurso a la tarea :
+                </label>
+                <!--<input  type="text" class="form-control"
+                        placeholder="Actividad a seleccionar " ng-model="tarea.actividad" required>-->
+                 <select  ng-model="recurso.tarea" data-ng-options="t.id as t .nombre for t in listadoTarea" class="form-control" required></select>
+            </div> 
+
+            <div  class="form-group col-md-6">
+                <label>
+                    Ubicaci&oacute;n
+                </label>
+                <input ng-model="recurso.ubicacion" placeholder="Ubicacion recursos" class="form-control" required>
+            </div>
+
+            <div class="col col-lg-7 ">
+                <button class="btn btn-primary" type="submit" ng-click="crearRecurso(formulario.$valid)" >
+                    Agregar
+                </button>
+                <button class="btn btn-success" type="button" ng-click="modificaRecurso(formulario)">
+                    Modificar
+                </button>
+            </div>
+        </form>
+
+        <form role="form" name="formulario2" ng-submit="buscaRecurso(formulario2)">
+            <div class="form-group col-lg-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="Nombre a buscar" 
+                        ng-model="recurso.nombre" required>
+            </div>
+            <div class="form-group col-lg-6"  style="margin-top: 24px ">
+                <button class="btn btn-info" type="submit">
+                    Buscar
+                </button>
+                <button class="btn btn-danger" type="button" ng-click="eliminaRecurso(formulario2)">
+                    Eliminar
+                </button>
+            </div>
+        </form>
+
+        <div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar cargos" ng-model="filtrar">
+
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+                        </th> 
+                        <th class="seleccionable">
+                            <a>Cantidad</a>
+                        </th>   
+                        <th class="seleccionable">
+                            <a>Descripcion</a>
+                        </th>    
+                        <th class="seleccionable">
+                            <a>Ubicacion</a>
+                        </th>  
+                        <th class="seleccionable">
+                            <a>Tarea asignada</a>
+                        </th>  
+                        
+                    </tr>
+                </thead>
+                <tbody ng-init="listarRecurso()" >
+                    <tr  ng-click="getSelectedRow()" ng-repeat="obj in listadoRecurso|
+                            filter:filtrar ">
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.cantidad}}</td>
+                        <td>{{obj.descripcion}}</td>
+                        <td>{{obj.ubicacion}}</td>
+                        <td>{{obj.tarea}}</td>
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>

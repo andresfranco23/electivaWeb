@@ -1,0 +1,118 @@
+<div class="col-xs-12">
+    <div class="col-md-12">
+        <form  method="post" role="form" name="formulario" >
+            <div class="form-group col-md-6">
+                <label>
+                    Identificacion
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="Identificacion " ng-model="integrante.identificacion" required>
+            </div> 
+            <div class="form-group col-md-6">
+                <label >
+                    Nombre
+                </label>
+                <input ng-model="integrante.nombre" placeholder="Nombre" class="form-control" required>
+            </div>
+            
+            
+            <div class="form-group col-md-6">
+                <label >
+                    Apellido
+                </label>
+                <input ng-model="integrante.apellido" placeholder="Nombre" class="form-control" required>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label >
+                    Email
+                </label>
+                <input ng-model="integrante.email" placeholder="Nombre" class="form-control" required>
+            </div>
+            
+            <div ng-init="listarForaneaProyectos()" class="form-group col-md-6">
+                <label>
+                    Proyecto Asignado
+                </label>
+
+                <select  ng-model="integrante.proyecto_id" data-ng-options="p.id as p.nombre for p in listadoProyectos" class="form-control" required></select>
+            </div> 
+
+            
+            
+            <div class="col col-lg-7 ">
+                <button class="btn btn-primary" type="submit" ng-click="crearIntegrante(formulario)" >
+                    Agregar
+                </button>
+                <button class="btn btn-success" type="button" ng-click="modificarIntegrante(formulario)">
+                    Modificar
+                </button>
+                <button class="btn btn-success" type="button" ng-click="eliminarIntegrante()">ELIMINAR</button>
+            </div>
+        </form>
+            
+        <div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar integrante" ng-model="filtrar">
+
+            </div>
+</div>
+
+
+
+<div class="panel-body">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Documento</a>
+
+
+                        </th> 
+
+
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+
+
+                        </th>   
+
+                        <th class="seleccionable">
+                            <a>Apellido</a>
+
+
+                        </th>    
+
+                        <th class="seleccionable">
+                            <a>Email</a>
+
+
+                        </th>    
+                        
+
+                    </tr>
+                </thead>
+                <tbody ng-init="listarIntegrantes()" >
+                    <tr  ng-click="getSelectedRow()" ng-repeat="obj in listadoIntegrantes|
+                            filter:filtrar ">
+                        <td>{{obj.identificacion}}</td>
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.apellido}}</td>
+                        <td>{{obj.email}}</td>
+                        
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+        
+        
+    </div>
+</div>
+

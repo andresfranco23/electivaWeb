@@ -1,0 +1,49 @@
+<div class="col-xs-12">
+    <div class="col-md-12">
+        <div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar proyecto" ng-model="filtrar">
+
+            </div>
+        </div>
+
+
+        <div class="panel-body" ng-init="listarProyectosIntegrante()">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+                        </th> 
+                        <th class="seleccionable">
+                            <a>Lider</a>
+                        </th> 
+                        <th class="seleccionable">
+                            <a>Inicio</a>
+                        </th>   
+                        <th class="seleccionable">
+                            <a>Fin</a>
+                        </th>    
+                        <th class="seleccionable">
+                            <a>Etapa</a>
+                        </th>    
+                    </tr>
+                </thead>
+                <tbody ng-init="listarProyectos()" >
+                    <tr  ng-click="getSelectedRow()" ng-repeat="obj in listadoProyectos|
+                            filter:filtrar ">
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.lider}}</td>
+                        <td>{{obj.inicio}}</td>
+                        <td>{{obj.fin}}</td>
+                        <td>{{obj.etapa}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

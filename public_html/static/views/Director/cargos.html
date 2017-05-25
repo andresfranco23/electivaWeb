@@ -1,0 +1,132 @@
+<div class="col-xs-12">
+    <div class="col-md-12">
+        <form  method="post" role="form" name="formulario" >
+            <div class="form-group col-md-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="Nombre " ng-model="cargo.nombre" required>
+            </div> 
+            <div class="form-group col-md-6">
+                <label >
+                    Descripcion:
+                </label>
+                <input ng-model="cargo.descripcion" placeholder="Descripcion" class="form-control" required>
+            </div>
+            <div ng-init="listarForaneaProyectos()" class="form-group col-md-6">
+                <label>
+                    Proyecto
+                </label>
+
+                <select  ng-model="cargo.proyectoId" data-ng-options="p.id as p.nombre for p in listadoProyectos" class="form-control" required></select>
+            </div> 
+
+            <div  class="form-group col-md-6">
+                <label>
+                    Horario
+                </label>
+
+                <select  ng-model="cargo.horario" data-ng-options="d.opcion as d.opcion for d in dias" class="form-control" required></select>
+            </div>
+
+            <div  class="form-group col-lg-6">
+                <label>
+                    Salario
+                </label>        
+                <input step="any" type="number" placeholder="salario" ng-model="cargo.salario" class="form-control" required>
+            </div>
+            <div class="col col-lg-7 ">
+                <button class="btn btn-primary" type="submit" ng-click="crearCargo(formulario)" >
+                    Agregar
+                </button>
+                <button class="btn btn-success" type="button" ng-click="modificarCargo(formulario)">
+                    Modificar
+                </button>
+            </div>
+        </form>
+
+        <form role="form" name="formulario2" ng-submit="buscarCargo(formulario2)">
+            <div class="form-group col-lg-6">
+                <label>
+                    Nombre
+                </label>
+                <input  type="text" class="form-control"
+                        placeholder="nombre a buscar" 
+                        ng-model="cargo.nombre" required>
+            </div>
+            <div class="form-group col-lg-6"  style="margin-top: 24px ">
+            <button class="btn btn-info" type="submit">
+                Buscar
+            </button>
+            <button class="btn btn-danger" type="button" ng-click="eliminarCargo(formulario2)">
+                Eliminar
+            </button>
+            </div>
+        </form>
+
+        <div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar cargos" ng-model="filtrar">
+
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+
+
+                        </th> 
+
+
+                        <th class="seleccionable">
+                            <a>descripcion</a>
+
+
+                        </th>   
+
+                        <th class="seleccionable">
+                            <a>Proyecto</a>
+
+
+                        </th>    
+
+                        <th class="seleccionable">
+                            <a>Horario</a>
+
+
+                        </th>    
+                        <th class="seleccionable">
+                            <a>Etapa</a>
+
+
+                        </th>  
+
+                    </tr>
+                </thead>
+                <tbody ng-init="listarCargo()" >
+                    <tr  ng-click="getSelectedRow()" ng-repeat="obj in listadoCargo|
+                            filter:filtrar ">
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.descripcion}}</td>
+                        <td>{{obj.proyectoId}}</td>
+                        <td>{{obj.horario}}</td>
+                        <td>{{obj.salario}}</td>
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+</div>

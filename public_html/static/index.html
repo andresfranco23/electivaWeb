@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <!-- Font Awesome -->        
+        <link href="Recursos/assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+        <!-- Metis core stylesheet -->        
+        <link href="Recursos/assets/css/main.css" rel="stylesheet" type="text/css"/>
+        <!-- metisMenu stylesheet -->        
+        <link href="Recursos/assets/lib/metismenu/metisMenu.css" rel="stylesheet" type="text/css"/>
+        <!-- onoffcanvas stylesheet -->        
+        <link href="Recursos/assets/lib/onoffcanvas/onoffcanvas.css" rel="stylesheet" type="text/css"/>
+        <!-- animate.css stylesheet -->        
+        <link href="Recursos/assets/lib/animate.css/animate.css" rel="stylesheet" type="text/css"/>        
+        <!--Mi estilo css-->
+        <link href="Recursos/Css/MyStyle.css" rel="stylesheet" type="text/css"/>
+        <link href="Dependecias/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="Dependecias/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="Dependecias/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="Dependecias/bower_components/angular/angular.min.js" type="text/javascript"></script>
+        <script src="Dependecias/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+        <script src="controllers/logIn/logInCtl.js" type="text/javascript"></script>
+        <script src="controllers/logIn/logInSer.js" type="text/javascript"></script>
+        <script src="controllers/proyectos/proyectosControl.js" type="text/javascript"></script>
+        <script src="controllers/proyectos/proyectosService.js" type="text/javascript"></script>
+        
+        
+        
+        
+        
+        
+        
+    </head>
+    <body ng-app="appPrincipal" class="paraBody">
+        <div class="form-signin  col-xs-7 alinearFormulariLogin">            
+            <hr>
+            <div class="tab-content">
+                <div class="paraImagenLogin">
+                    <img src="Recursos/images/login.png" alt=""/>    
+                </div>                
+                <div id="login" class="tab-pane active">
+                    <form  ng-controller="CtlLogIn" name="formLogin">
+                        <p class="text-muted text-center">      
+                            Ingresa tu nombre de usuario y password
+                        </p>
+                        <input type="text" placeholder="Correo electronico" class="form-control top" style="margin-bottom: 5px" ng-model="identificacion.usuario">
+                        <input type="password" placeholder="Password" class="form-control bottom" ng-model="identificacion.password">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="logIn(formLogin.$valid)" >Ingresar</button>
+                    </form>
+                </div>
+                <div id="forgot" class="tab-pane">
+                    <form action="index.html">
+                        <p class="text-muted text-center">Ingrese un correo electronico valido</p>
+
+                        <input type="email" placeholder="mail@domain.com" class="form-control">
+                        <br>
+                        <button class="btn btn-lg btn-danger btn-block" type="submit">Recuperar Password</button>
+                    </form>
+                </div>
+                <div id="signup" class="tab-pane">
+                    <form  ng-controller="CtlLogIn" name="formRegistro">                        
+                        <select  class="form-control top" required ng-model="identificacion.tipodocumento">                            
+                            <option>Seleccione el tipo de documento</option>
+                            <option>Cedula de ciudadania</option>
+                            <option>Tarjeta de identidad</option>
+                            <option>Numero de pasaporte</option>                                
+                            <option>Cedula extranjera</option>
+                        </select>
+                        <input type="number" placeholder="Numero de documento" class="form-control middle" required ng-model="identificacion.numero">
+                        <input type="text" placeholder="Nombres" class="form-control middle" required ng-model="identificacion.nombre">                        
+                        <input type="text" placeholder="Apellido" class="form-control middle" required ng-model="identificacion.apellido">
+                        <select  class="form-control middle" required ng-model="identificacion.tipouser" ng-init="Seleccione">                            
+                            <option value="Seleccione">Seleccione el tipo de usuario</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Integrante">Integrante</option>        
+                        </select>
+                        <input type="email" placeholder="Correo electronico" class="form-control middle" required ng-model="identificacion.email">
+                        <input type="password" placeholder="Password" class="form-control middle" required ng-model="identificacion.password">
+                        <input type="password" placeholder="Repeat-Password" class="form-control middle" required ng-model="identificacion.repeatpassword">
+                        <input type="date" placeholder="Fecha de nacimiento" class="form-control bottom" required ng-model="identificacion.fechanacimiento">
+                        <button class="btn btn-lg btn-success btn-block" type="submit" ng-click="registrarUsuarios(formRegistro.$valid)">Registrar</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <ul class="list-inline">
+                    <li><a class="text-muted" href="#login" data-toggle="tab">Ingresar</a></li>
+                    <li><a class="text-muted" href="#forgot" data-toggle="tab">Recuperar Password</a></li>
+                    <li><a class="text-muted" href="#signup" data-toggle="tab">Registrate</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!--jQuery -->                
+        <script src="Recursos/assets/lib/jquery/jquery.js" type="text/javascript"></script>
+        <!--Bootstrap -->        
+        <script src="Recursos/assets/lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+                            (function ($) {
+                                $(document).ready(function () {
+                                    $('.list-inline li > a').click(function () {
+                                        var activeForm = $(this).attr('href') + ' > form';
+                                        //console.log(activeForm);
+                                        $(activeForm).addClass('animated fadeIn');
+                                        //set timer to 1 seconds, after that, unload the animate animation
+                                        setTimeout(function () {
+                                            $(activeForm).removeClass('animated fadeIn');
+                                        }, 1000);
+                                    });
+                                });
+                            })(jQuery);
+        </script>
+
+
+    </body>
+</html>
