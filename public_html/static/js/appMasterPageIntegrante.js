@@ -30,6 +30,10 @@ app.config(function ($routeProvider) {
                 controller: 'controladorActividadesIntegrante',
                 templateUrl: 'Integrante/actividadesIntegrante.html'
             })
+            .when('/Estados',{
+                controller:'controladorEstadoIntegrante',
+                templateUrl:'Integrante/estadoIntegrante.html'
+            })
             .otherwise({
                 redirectTo: '/'
             });

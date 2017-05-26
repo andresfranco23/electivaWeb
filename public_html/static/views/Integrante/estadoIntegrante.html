@@ -1,0 +1,64 @@
+<div class="panel panel-primary col-lg-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+
+                <input type="text" class="form-control" placeholder="Buscar cargos" ng-model="filtrar">
+
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="seleccionable">
+                            <a>Nombre</a>
+
+
+                        </th> 
+
+
+                        <th class="seleccionable">
+                            <a>inicio</a>
+
+
+                        </th>   
+
+                        <th class="seleccionable">
+                            <a>fin</a>
+
+
+                        </th>    
+
+                        <th class="seleccionable">
+                            <a>etapa</a>
+
+
+                        </th>
+                        
+                        <th class="seleccionable">
+                            <a>estado</a>
+
+
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody ng-init="listadoEstadoIntegrante()" >
+                    <tr ng-repeat="obj in listado|
+                            filter:filtrar ">
+                        <td>{{obj.nombre}}</td>
+                        <td>{{obj.inicio}}</td>
+                        <td>{{obj.fin}}</td>
+                        <td>{{obj.etapa}}</td>
+                        <td>{{obj.estado}}</td>
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </div>

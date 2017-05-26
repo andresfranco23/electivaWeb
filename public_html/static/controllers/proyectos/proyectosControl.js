@@ -20,10 +20,11 @@ app.controller('controladorProyectos', function ($scope, $window, proyectosServi
     
     $scope.etapas = [
         
-        {opcion:"0%-25%"},
-        {opcion:"25%-50%"},
-        {opcion:"50%-75%"},
-        {opcion:"75%-100%"}
+        {opcion:"0%"},
+        {opcion:"25%"},
+        {opcion:"50%"},
+        {opcion:"75%"},
+        {opcion:"100%"}
         
     ];
     

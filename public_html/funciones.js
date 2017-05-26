@@ -17,7 +17,7 @@ var integrante = require('./static/dao/daoIntegrantes');
 var actividad = require('./static/dao/daoActividad');
 var proyectoIntegrante = require('./static/dao/daoProyectosIntegrante');
 var actividadIntegrante = require('./static/dao/daoActividadesIntegrante');
-
+var estadoProyectoIntegrante = require('./static/dao/daoEstadoIntegrante');
 
 
 function configurarServidor() {
@@ -343,7 +343,9 @@ app.post('/listarTareaActividad',function(entrada,respuesta){
 });
 
 
-
+app.post('/estadoProyectoIntegrante',function(entrada,respuesta){
+   estadoProyectoIntegrante.listadoEstado(entrada,respuesta); 
+});
 
 
 exports.configurarServidor = configurarServidor;
